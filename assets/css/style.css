@@ -1,0 +1,796 @@
+@charset "utf-8";
+
+html{
+    font-size: 100%;
+}
+
+body{
+    font-family: "Yu Gothic Medium", "游ゴシック", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif; 
+    line-height: 1.7;
+    color: #432;
+}
+
+
+
+/* フェードインテキスト */
+.fade-in-text {
+    position: relative;
+    font-size: 24px;
+    opacity: 0; /* 初めは透明に設定 */
+    transform: translateY(100%); /* 下からスライドするために位置を下に設定 */
+    animation: fadeInFromBottom 4s forwards; /* フェードインアニメーションの設定 */
+  }
+  
+  @keyframes fadeInFromBottom {
+    to {
+      opacity: 1; /* アニメーション終了時に完全に表示 */
+      transform: translateY(0); /* アニメーション終了時の位置 */
+    }
+  }
+
+/*========= LoadingのためのCSS ===============*/
+
+/* Loading背景画面設定　*/
+#splash {
+    /*fixedで全面に固定*/
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  text-align:center;
+  color: #fff;
+}
+
+/* Loading画像中央配置　*/
+#splash_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+    z-index: 999;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  width: 100%;
+}
+
+/*IE11対策用バーの線の高さ※対応しなければ削除してください*/
+#splash_text svg{
+    height: 2px;
+}
+
+/*割れる画面のアニメーション*/
+.loader_cover {
+    width: 100%;
+    height: 50%;
+    background-color: #333;
+    transition: all .2s cubic-bezier(.04, .435, .315, .9);
+    transform: scaleY(1);
+}
+/*上の画面*/
+.loader_cover-up {
+    transform-origin: center top;
+}
+
+/*下の画面*/
+.loader_cover-down {
+    position: absolute;
+    bottom: 0;
+    transform-origin: center bottom;
+}
+/*クラス名がついたらY軸方向に0*/
+.coveranime {
+    transform: scaleY(0);
+}
+/*========= LoadingのためのCSS ここまで===============*/
+
+
+
+
+
+
+
+
+
+
+/*========= LoadingのためのCSS ここまで===============*/
+
+
+#header{
+    position: relative;/*h1の中央寄せ配置の起点とするためのrelative*/
+    height: 100vh;/*高さを全画面にあわせる*/
+} 
+
+#video-area{
+    position: fixed;
+    z-index: -1;/*最背面に設定*/
+    top: 0;
+    right:0;
+    left:0;
+    bottom:0;
+    overflow: hidden;
+}
+
+#video {
+    /*天地中央配置*/
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*縦横幅指定*/
+    width: 177.77777778vh; /* 16:9 の幅→16 ÷ 9＝ 177.77% */
+    height: 56.25vw; /* 16:9の幅 → 9 ÷ 16 = 56.25% */
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.header1{
+    
+    display:flex;
+}
+
+.main-nav li{
+    margin-right: 10px;
+    border-bottom: 1px solid #17F9AD;
+    
+ }
+
+.main-nav a{
+    color:#fff;
+}
+
+.pagelogo{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+}
+.pagelogo img{
+    width: 100px;
+    
+}
+
+
+.main-nav{
+    position:absolute;
+    display: flex;
+    top:37px;
+    right: 15px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+}
+@media(max-width:1100px) {
+  .main-nav li{
+    font-size:0.8rem;
+}
+}
+
+@media(max-width:670px) {
+  .main-nav{
+    display: block; /*リストを縦並び*/
+  }
+  .main-nav li{
+    font-size:0.8rem;
+}
+}
+
+/*見出し設定*/
+.page-title{
+    /*要素の配置*/
+    position:absolute;
+    /*要素を天地中央寄せ*/
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    /*見た目の調整*/
+    color:#fff;
+    text-shadow: 0 0 15px #666;
+    font-size: 5rem;
+    font-family: 'Corben', cursive;
+    /* text-transform: uppercase; */
+    font-weight: normal;
+}
+
+@media(max-width:1100px) {
+  .page-title{
+    font-size:3rem;
+}
+}
+
+@media(max-width:670px) {
+  .page-title{
+    font-size:2rem;
+}
+}
+
+@media(max-width:350px) {
+  .page-title{
+    font-size:1.3rem;
+}
+}
+/*========= レイアウトのためのCSS ===============*/
+section{
+    border-top: solid 3px #17F9AD;
+}
+
+.container{
+  background:#fff;
+  padding:300px 0;
+  text-align: center;
+}
+
+.container h2{
+    width: 50%;
+    font-size: 35px;
+    background-color: #17F9AD;;
+    color: #fff;
+    padding: 0;
+    font-family: "Noto Sans Japanese",sans-serif;
+    margin: 5px auto;
+}
+
+.container p{
+    padding: 5px auto;
+}
+
+a{
+    text-decoration: none;
+}
+p,li{
+    text-align: left;
+    /* width: 25em; */
+    font-size: 18px;
+    padding: 0;
+}  
+#career-section p,#selfintroduce-section p{
+    text-align:left;
+}
+
+#main-content{
+    padding: 20px;
+}
+
+main section{
+    margin:15px auto;
+    width: 80%;
+}
+
+#selfintroduce-section{
+    background-image: url(/assets/img/pictures/mustafa-alkan-floral-tile-2-3.jpg);
+    background-color:rgba(255,255,255,0.8);
+    background-blend-mode:lighten;
+    background-size: 2000px;
+    /* opacity: 30%; */
+}
+
+#selfintroduce-section p{
+    color: #000;
+}
+
+#me{
+    width: 130px;
+    border-radius: 50%;
+    border: solid 4px #17F9AD;
+    
+}
+
+#career-section{
+    background-image: url(/assets/img/pictures/hicham-habchi-spidery8.jpg);
+    background-color:rgba(255,255,255,0.8);
+    background-blend-mode:lighten;
+    background-size: 1000px;
+}
+
+
+
+/* ニュースサイト */
+#castle img{
+    max-width: 100%;
+}
+/* #everynews{
+    background-image: url(/Users/masaakikato/Desktop/オリジナルweb/assets/img/pictures/pan-zhijie-s2.jpg);
+} */
+
+.news_list a {
+    text-decoration: none;
+    color: #333;
+}
+
+.news_list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.news {
+  padding: 50px 0;
+  background: #17F9AD;
+}
+
+.inner {
+  width: 80%;
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 65px 0 100px;
+}
+
+
+.sub_ttl {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ここからがニュース記事のCSS */
+
+.news_list {
+  margin: 0 5%;
+}
+
+.news_list_item {
+  padding: 25px 0;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.news_list_item:first-child {
+  border-top: 1px solid #E6E6E6;
+}
+.news_list_item a {
+ position: relative;
+ display: flex;
+ padding-right: 30px;
+}
+
+.news_list_date {
+  font-size: 15px;
+  display: flex;
+  margin-right: 15px;
+  align-items: center;
+}
+
+.news_item {
+  background: #17F9AD;
+  border-radius: 14px;
+  width: 6em;
+  /* 親要素の文字サイズを基準 */
+  text-align: center;
+  margin-left: 20px;
+}
+
+.arrow {
+  width: 25px;
+  height: 1px;
+  background: #707070;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.arrow::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 1px;
+  background: #707070;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 0px;
+  bottom: 2px;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .news_list_item a {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .news_list_item a  {
+        font-size: 14px;
+    }
+
+
+}
+@media screen and (max-width: 480px) {
+    .arrow {
+        display: none;
+    }
+    .news_list_item a {
+        padding-right: 0;
+    }
+}
+
+
+/* ポートフォリオ */
+/* .portfolio-section p{
+    text-align: left;
+} */
+.portfolio-section{
+    background-color: #000;
+    width: 100%;
+}
+.portfolio-section h2{
+    background-color: #000;
+}
+
+.portfolio-section p{
+    color: #B95E3D;
+}
+.portfolio-section div{
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.portfolio-section div img{
+    width: 50%;
+    padding-right: 10px;
+    object-fit: contain;
+}
+#portfolio2{
+    width: 30%;
+}
+
+#portfolio3,#portfolio5{
+    width: 70%;
+}
+
+@media (max-width:1000px){
+  #portfolio3,#portfolio5{
+    width: 50%;
+    
+}
+.portfolio-section div img{
+  width: 50%;
+  padding-right: 10px;
+  object-fit: contain;
+}
+.portfolio-section div p{
+  font-size: 0.5em;
+}
+}
+
+
+/* 興味のある技術分野 */
+#target-techarea{
+    background-color: #000;
+    width: 100%;
+    margin: 0;
+}
+div#tech-logo{
+    width: 80%;
+    margin: auto;
+}
+#tech-logo img{
+    width: 150px;
+    height:150px;
+}
+
+#target-techarea p{
+    color: #fff;
+}
+/* li#tech-logo{
+    justify-items: center;
+} */
+
+/* スライダー */
+/* スライダーのためのcss */
+/*===================================*/
+.slider {/*横幅94%で左右に余白を持たせて中央寄せ*/
+    width:94%;
+    margin:0 auto;
+}
+
+.slider img {
+    width:100%;/*スライダー内の画像を横幅100%に*/
+    height:auto;
+    margin-left: 50%; /* ここで親要素リストの真ん中に調整*/
+    transform: translateX(-50%); /* ここで親要素リストの真ん中に調整*/
+}
+
+/*slickのJSで書かれるタグ内、スライド左右の余白調整*/
+
+.slider .slick-slide {
+    margin:0 10px;
+}
+
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev, 
+.slick-next{
+    position: absolute;/*絶対配置にする*/
+    top: 42%;
+    cursor: pointer;/*マウスカーソルを指マークに*/
+    outline: none;/*クリックをしたら出てくる枠線を消す*/
+    border-top: 2px solid #17F9AD;/*矢印の色*/
+    border-right: 2px solid #17F9AD;/*矢印の色*/
+    height: 30px;
+    width: 30px;
+}
+
+.slick-prev {/*戻る矢印の位置と形状*/
+    left: -1.5%;
+    transform: rotate(-135deg);
+}
+
+.slick-next {/*次へ矢印の位置と形状*/
+    right: -1.5%;
+    transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+    text-align:center;
+  margin:20px 0 0 0;
+}
+
+.slick-dots li {
+    display:inline-block;
+    margin:0 5px;
+}
+
+.slick-dots button {
+    color: transparent;
+    outline: none;
+    width:8px;/*ドットボタンのサイズ*/
+    height:8px;/*ドットボタンのサイズ*/
+    display:block;
+    border-radius:50%;
+    background:#17F9AD;/*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button{
+    background:#333;/*ドットボタンの現在地表示の色*/
+}
+
+
+
+/* 問い合わせフォーム */
+#form-back{
+    /* background-image: url(assets/img/pictures/pan-zhijie-s2.jpg); */
+    background-color: #000;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+body { background:rgb(30,30,40); }
+form { max-width:420px; margin:50px auto;
+    margin-top:15px;
+}
+
+
+.feedback-input {
+  color:black;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border:3px solid #17F9AD;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+
+.feedback-input:focus { border:2px solid #CC4949; }
+
+textarea {
+  height: 150px;
+  line-height: 150%;
+  resize:vertical;
+}
+
+[type="submit"] {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100%;
+  background:#17F9AD;
+  border-radius:5px;
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+[type="submit"]:hover { background:#17F9AD; }
+
+
+/* --------------------- */
+/* グラデーション */
+#footer-content{
+    /* width: 100%; */
+    /* height: 100vh; */
+    /* z-index: -2; */
+    background:linear-gradient(45deg, #3bade3,#fff,#44ea76);/*グラデーションを定義*/
+    /* background-size: 200% 200%;サイズを大きくひきのばす */
+    /* animation: bggradient 20s ease infinite; */
+  }
+  
+  /* @keyframes bggradient{
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  } */
+/* --------------------- */
+footer.container{
+    padding:  0;
+
+}
+
+.footer-nav {
+    /* list-style: none; */
+    padding: 0;
+    margin: 0;
+    text-align: center; /* リストアイテムを中央揃えにする場合（任意） */
+}
+
+.footer-nav li {
+    display: inline-block; /* リストアイテムを横並びにする */
+    margin-right: 10px; /* アイテム間の余白を設定（任意） */
+}
+
+
+/* ここからボタンのデザイン */
+
+#return-button {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    text-decoration: none;
+    background-color: #6002EE;
+    display: block;
+    text-align: center;
+    border-radius: 24px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+  }
+  
+  #return-button::before {
+    content: '\f062';
+    font-family: 'Font Awesome 6 Free';
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 48px;
+  }
+  
+  /* fadeinクラスがついた時だけ表示する */
+  #return-button.fadein {
+    opacity: 1;
+  }
+  
+  /* ここまでボタンのデザイン */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ネオンサイン */
+x-sign {
+    --interval: 1s;
+    display: block;
+    text-shadow: 
+      0 0 10px var(--color1),
+      0 0 20px var(--color2),
+      0 0 40px var(--color3),
+      0 0 80px var(--color4);
+    will-change: filter, color;
+    filter: saturate(60%);
+    animation: flicker steps(100) var(--interval) 1s infinite;
+  }
+  
+  #x1{
+    color: yellow;
+    --color1: goldenrod;
+    --color2: orangered;
+    --color3: mediumblue;
+    --color4: purple;
+    font-family: Gruppo;
+  }
+  
+  #x2 {
+    color: lightpink;
+    --color1: pink;
+    --color2: orangered;
+    --color3: red;
+    --color4: magenta;
+    font-family: Bad Script;
+  }
+  
+  #x3{
+    color: lightyellow;
+    --color1: yellow;
+    --color2: lime;
+    --color3: green;
+    --color4: mediumblue;
+    font-family: Kumar One Outline;
+  }
+  
+  #x4{
+    color: lightyellow;
+    --color1: gold;
+    --color2: firebrick;
+    --color3: pink;
+    --color4: red;
+    font-family: Londrina Outline;
+  }
+  
+  
+  #x5 {
+    color: azure;
+    --color1: azure;
+    --color2: aqua;
+    --color3: dodgerblue;
+    --color4: blue;
+    font-family: Sriracha;
+  }
+  
+  #x6 {
+    color: tomato;
+    --color1: orangered;
+    --color2: firebrick;
+    --color3: maroon;
+    --color4: darkred;
+    font-family: Yellowtail;
+  }
+  
+  #x7 {
+    color: lightyellow;
+    --color1: yellow;
+    --color2: orange;
+    --color3: brown;
+    --color4: purple;
+    font-family: Bad Script;
+  }
+  
+  #x8 {
+    color: yellow;
+    --color1: yellow;
+    --color2: lime;
+    --color3: green;
+    --color4: darkgreen;
+    font-family: Monoton;
+  }
+  
+  #x9 {
+    color: lightyellow;
+    --color1: yellow;
+    --color2: gold;
+    --color3: orange;
+    --color4: darkred;
+    font-family: Sriracha;
+  }
+  
+  @keyframes flicker {
+    50% {
+      color: white;
+      filter: saturate(200%) hue-rotate(20deg);
+    }
+  }
